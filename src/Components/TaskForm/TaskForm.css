@@ -1,0 +1,22 @@
+.customContainerFluid{
+  padding: 2rem;
+  text-align: center;
+  margin: 30px;
+  border-radius: 5px;
+  background-image: linear-gradient(
+      185deg,
+      hsl(216deg 61% 68%) 0%,
+      hsl(216deg 61% 70%) 12%,
+      hsl(216deg 61% 72%) 24%,
+      hsl(217deg 61% 74%) 35%,
+      hsl(217deg 61% 76%) 46%,
+      hsl(217deg 61% 78%) 57%,
+      hsl(217deg 61% 80%) 65%,
+      hsl(217deg 62% 82%) 73%,
+      hsl(217deg 62% 85%) 80%,
+      hsl(217deg 62% 87%) 86%,
+      hsl(217deg 62% 89%) 91%,
+      hsl(217deg 62% 91%) 96%,
+      hsl(217deg 62% 93%) 100%
+    );
+}

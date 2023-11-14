@@ -1,0 +1,12 @@
+.customListGrupo{
+    display: flex !important;
+    justify-content: space-between;
+    height: 60px;
+}
+
+.gapDiv{
+    display: flex;
+    column-gap: 16px;
+    align-items: center;
+}
+
