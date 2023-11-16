@@ -19,14 +19,14 @@ const TaskForm = () => {
   return (
     <div className='container-fluid customContainerFluid'>
         <h1><strong>DO.TASK</strong></h1>
-        <h3><i>App de tareas</i></h3>
+        <h4><i>App de tareas</i></h4>
         <br />
         <div className='container-lg customContainer-lg'>
         <TaskModal onSave={handleGuardarTarea} />
         </div>
         <br />
         <br />
-        <TaskList tareas={tareas}></TaskList>
+        <TaskList tareas={tareas} setTareas={setTareas}></TaskList>
     </div>
   )
 }

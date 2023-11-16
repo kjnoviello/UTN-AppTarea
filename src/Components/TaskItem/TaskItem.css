@@ -10,3 +10,16 @@
     align-items: center;
 }
 
+.form-check-input[type=checkbox] {
+    border: 2px solid black;
+    border-radius: 50% !important;
+}
+
+.form-check-input:checked{
+    background-color: #1b1b1b !important;
+    border-color: #363636 !important;
+}
+
+.hidden {
+    display: none;
+  }
