@@ -14,6 +14,16 @@ const TaskForm = () => {
     }
   };
 
+  const handleGuardarTareaEditada = (descripcion, index) => {
+    if (descripcion !="") {
+      console.log("esto es descripcion", descripcion);
+      console.log("esto es tareas", tareas);
+      tareas[index] = descripcion;
+      setTareas([...tareas]);
+    }
+  };
+
+
   console.log("tareas", tareas);
 
   return (
@@ -22,11 +32,11 @@ const TaskForm = () => {
         <h4><i>App de tareas</i></h4>
         <br />
         <div className='container-lg customContainer-lg'>
-        <TaskModal onSave={handleGuardarTarea} />
+          <TaskModal handleGuardarTarea={handleGuardarTarea} />
         </div>
         <br />
         <br />
-        <TaskList tareas={tareas} setTareas={setTareas}></TaskList>
+          <TaskList tareas={tareas} setTareas={setTareas} handleGuardarTareaEditada={handleGuardarTareaEditada}></TaskList>
     </div>
   )
 }

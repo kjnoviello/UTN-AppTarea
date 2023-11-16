@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import TaskItem from '../TaskItem/TaskItem';
 
-const TaskList = ({tareas, setTareas }) => {
+const TaskList = ({tareas, setTareas, handleGuardarTareaEditada }) => {
   return (
     <div className='taskListContainer'>
       <ul className="list-group">
-        <TaskItem tareas={tareas} setTareas={setTareas}></TaskItem>
+        <TaskItem tareas={tareas} setTareas={setTareas} handleGuardarTareaEditada={handleGuardarTareaEditada}></TaskItem>
       </ul>
     </div>
   )

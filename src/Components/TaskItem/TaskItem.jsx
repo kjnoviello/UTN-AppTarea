@@ -1,11 +1,25 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import './TaskItem.css'; 
-import Swal from "sweetalert2";
+import { useState, useEffect } from 'react';
+import Button from 'react-bootstrap/Button';
+import TaskModalEdit from '../TaskModalEdit/TaskModalEdit';
+import Swal from 'sweetalert2';
+import './TaskItem.css';
 
-const TaskItem = ({ tareas, setTareas }) => {
+const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada }) => {
   const [checkedTasks, setCheckedTasks] = useState([]);
+  const [selectedIndex, setSelectedIndex] = useState(null);
+
+  const [show, setShow] = useState(false);
+
+  const handleShow = (index) => {
+    setSelectedIndex(index);
+    setShow(true);
+  };
+
+  const handleClose = () => {
+    setSelectedIndex(null);
+    setShow(false);
+  };
 
   useEffect(() => {
     setCheckedTasks(new Array(tareas.length).fill(false));
@@ -20,20 +34,27 @@ const TaskItem = ({ tareas, setTareas }) => {
   };
 
   const handleDelete = (index) => {
-
     Swal.fire({
-      title: "Eliminar la tarea?",
+      title: 'Eliminar la tarea?',
       showCancelButton: true,
-      confirmButtonText: "Eliminar",
+      confirmButtonText: 'Eliminar',
     }).then((result) => {
       if (result.isConfirmed) {
-        // Swal.fire("Eliminada!", "", "success");
+        Swal.fire({
+          title: 'Eliminada!',
+          icon: 'success',
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         setTareas((prevTareas) => {
           const newTareas = [...prevTareas];
           newTareas.splice(index, 1);
           return newTareas;
         });
-      }});
+      }
+    });
   };
 
   return (
@@ -48,13 +69,24 @@ const TaskItem = ({ tareas, setTareas }) => {
               checked={checkedTasks[index] || false}
               onChange={() => handleCheck(index)}
             />
-            {index} {/* BORRAR ESTA LINEA. SOLO ES INFORMATIVO */}
             {checkedTasks[index] ? <strike>{tarea}</strike> : tarea}
           </div>
           <div className="gapDiv">
-            <Button variant="outline-dark">
+            <Button variant="outline-dark" onClick={() => handleShow(index)}>
               <i className="ri-edit-line"></i>
             </Button>
+            {show ? (
+              <TaskModalEdit
+                show={show}
+                setShow={setShow}
+                handleClose={handleClose}
+                tareas={tareas}
+                index={selectedIndex}
+                handleGuardarTareaEditada={handleGuardarTareaEditada}
+              />
+            ) : (
+              <></>
+            )}
             <Button variant="outline-dark" onClick={() => handleDelete(index)}>
               <i className="ri-delete-bin-2-line"></i>
             </Button>
