@@ -2,6 +2,7 @@
     display: flex !important;
     justify-content: space-between;
     height: 60px;
+    height: auto;
 }
 
 .gapDiv{
@@ -13,6 +14,7 @@
 .form-check-input[type=checkbox] {
     border: 2px solid black;
     border-radius: 50% !important;
+    min-width: 16px;
 }
 
 .form-check-input:checked{
@@ -22,4 +24,30 @@
 
 .hidden {
     display: none;
-  }
+}
+
+.swal2-confirm{
+    background-color: #dc3545 !important;
+}
+
+.containerTarea{
+    display: flex;
+    column-gap: 10px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 576px) {
+    .customListGrupo{
+        font-size: 12px;
+    }
+    .form-check-input[type=checkbox]{
+        height: 16px;
+        /* font-size: 16px; */
+    }
+    [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+        padding: 2px;
+    }
+    .gapDiv{
+        column-gap: 8px;
+    }
+}

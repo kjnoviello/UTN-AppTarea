@@ -35,10 +35,16 @@ function Footer() {
 
       <hr />
 
-      <div className='text-center p-3'>
+      {/* <div className='text-center p-3'>
         © 2023 Design: 
         <a className='text-white' href='#'>
           Kevin Joel Noviello
+        </a>
+      </div> */}
+      <div className='text-center p-3'>
+        © 2023 - 
+        <a className='text-white' href='#'>
+          UTN -React
         </a>
       </div>
     </MDBFooter>

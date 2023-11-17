@@ -8,8 +8,17 @@ import './TaskItem.css';
 const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada }) => {
   const [checkedTasks, setCheckedTasks] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(null);
-
   const [show, setShow] = useState(false);
+
+  const date = ()=>{
+    const date = new Date();
+    const [month, day, year] = [
+      date.getMonth(),
+      date.getDate(),
+      date.getFullYear(),
+    ];
+    return `${day}/${month}/${year}`
+  }
 
   const handleShow = (index) => {
     setSelectedIndex(index);
@@ -69,7 +78,12 @@ const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada }) => {
               checked={checkedTasks[index] || false}
               onChange={() => handleCheck(index)}
             />
-            {checkedTasks[index] ? <strike>{tarea}</strike> : tarea}
+            <div className='containerTarea'>
+              <div>
+                {date()}
+              </div>
+              <strong> {checkedTasks[index] ? <strike>{tarea}</strike> : tarea}</strong>
+            </div>
           </div>
           <div className="gapDiv">
             <Button variant="outline-dark" onClick={() => handleShow(index)}>
@@ -84,9 +98,9 @@ const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada }) => {
                 index={selectedIndex}
                 handleGuardarTareaEditada={handleGuardarTareaEditada}
               />
-            ) : (
-              <></>
-            )}
+              ) : (
+                <></>
+              )}
             <Button variant="outline-dark" onClick={() => handleDelete(index)}>
               <i className="ri-delete-bin-2-line"></i>
             </Button>
