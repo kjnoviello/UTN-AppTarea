@@ -1,12 +1,29 @@
-// import { Button } from 'react-bootstrap'
-import { useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from 'react';
 import TaskModal from '../TaskModal/TaskModal';
 import TaskList from '../TaskList/TaskList';
+import { doc, getDoc, getFirestore } from "firebase/firestore"
 import ('./TaskForm.css')
 
 const TaskForm = () => {
 
   const [tareas, setTareas] = useState([]);
+  const [consultTask, setConsultTask] =useState("")
+
+  //! FIREBASE
+
+  useEffect(()=>{
+    const db = getFirestore()
+    const biciRef = doc(db, "consultTask", "TkMe4vVlctDnyxXMDZzY")
+    getDoc(biciRef).then((snapshot) =>{
+      if (snapshot.exists()) {
+        setConsultTask({ id: snapshot.id, ...snapshot.data()})
+        console.log(consultTask);
+      }
+    })
+  },[tareas])
+  
+  //! FIN FAREBASE
 
   const handleGuardarTarea = (descripcion) => {
     if (descripcion !="") {
@@ -16,15 +33,10 @@ const TaskForm = () => {
 
   const handleGuardarTareaEditada = (descripcion, index) => {
     if (descripcion !="") {
-      console.log("esto es descripcion", descripcion);
-      console.log("esto es tareas", tareas);
       tareas[index] = descripcion;
       setTareas([...tareas]);
     }
   };
-
-
-  console.log("tareas", tareas);
 
   return (
     <div className='container-fluid customContainerFluid'>

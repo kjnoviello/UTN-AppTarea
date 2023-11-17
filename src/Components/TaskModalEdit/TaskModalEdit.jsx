@@ -56,10 +56,10 @@ function TaskModalEdit({ handleGuardarTareaEditada, show, handleClose, tareas, i
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Cerrar
+            <i className="ri-close-line"></i>
           </Button>
           <Button variant="success" onClick={handleGuardar}>
-            Guardar
+            <i className="ri-save-line"></i>
           </Button>
         </Modal.Footer>
       </Modal>

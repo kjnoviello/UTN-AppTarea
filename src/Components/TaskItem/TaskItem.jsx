@@ -46,7 +46,8 @@ const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada }) => {
     Swal.fire({
       title: 'Eliminar la tarea?',
       showCancelButton: true,
-      confirmButtonText: 'Eliminar',
+      confirmButtonText: '<i class="ri-check-line"></i>',
+      cancelButtonText: '<i class="ri-close-line"></i>'
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
