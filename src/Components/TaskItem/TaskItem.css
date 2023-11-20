@@ -5,6 +5,10 @@
     height: auto;
 }
 
+.customListGrupo:nth-child(even){
+    background-color: rgb(230, 230, 230);
+}
+
 .gapDiv{
     display: flex;
     column-gap: 16px;
