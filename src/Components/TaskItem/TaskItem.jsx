@@ -5,30 +5,10 @@ import TaskModalEdit from '../TaskModalEdit/TaskModalEdit';
 import Swal from 'sweetalert2';
 import './TaskItem.css';
 
-const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada }) => {
+const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada, date }) => {
   const [checkedTasks, setCheckedTasks] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [show, setShow] = useState(false);
-
-  const date = ()=>{
-    const date = new Date();
-    const [month, day, year] = [
-      date.getMonth(),
-      date.getDate(),
-      date.getFullYear(),
-    ];
-    return `${day}/${month}/${year}`
-  }
-
-  const handleShow = (index) => {
-    setSelectedIndex(index);
-    setShow(true);
-  };
-
-  const handleClose = () => {
-    setSelectedIndex(null);
-    setShow(false);
-  };
 
   useEffect(() => {
     setCheckedTasks(new Array(tareas.length).fill(false));
@@ -41,6 +21,18 @@ const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada }) => {
       return newCheckedTasks;
     });
   };
+
+  const handleShow = (index) => {
+    setSelectedIndex(index);
+    setShow(true);
+  };
+
+  const handleClose = () => {
+    setSelectedIndex(null);
+    setShow(false);
+  };
+  
+  const fecha = date()
 
   const handleDelete = (index) => {
     Swal.fire({
@@ -81,7 +73,7 @@ const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada }) => {
             />
             <div className='containerTarea'>
               <div>
-                {date()}
+                {fecha}
               </div>
               <strong> {checkedTasks[index] ? <strike>{tarea}</strike> : tarea}</strong>
             </div>
@@ -98,6 +90,7 @@ const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada }) => {
                 tareas={tareas}
                 index={selectedIndex}
                 handleGuardarTareaEditada={handleGuardarTareaEditada}
+                date={date}
               />
               ) : (
                 <></>

@@ -6,7 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import Swal from 'sweetalert2';
 import './TaskModalEdit.css';
 
-function TaskModalEdit({ handleGuardarTareaEditada, show, handleClose, tareas, index }) {
+function TaskModalEdit({ handleGuardarTareaEditada, show, handleClose, tareas, index, date }) {
   const [descripcion, setDescripcion] = useState('');
 
   useEffect(() => {
@@ -17,8 +17,6 @@ function TaskModalEdit({ handleGuardarTareaEditada, show, handleClose, tareas, i
   const handleSetDescripcion = (e) => {
     setDescripcion(e.target.value);
   };
-
-  
 
   const handleGuardar = () => {
     handleGuardarTareaEditada(descripcion, index);
@@ -36,6 +34,8 @@ function TaskModalEdit({ handleGuardarTareaEditada, show, handleClose, tareas, i
     }
   };
 
+  const fecha = date()
+
   return (
     <>
       <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
@@ -44,9 +44,8 @@ function TaskModalEdit({ handleGuardarTareaEditada, show, handleClose, tareas, i
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Color</Form.Label>
-              <Form.Control type="color" />
+            <Form.Group>
+              <Form.Label>{fecha}</Form.Label>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
               <Form.Label>Descripción de la tarea</Form.Label>
