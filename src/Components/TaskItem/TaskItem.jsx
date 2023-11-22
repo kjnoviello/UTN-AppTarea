@@ -5,20 +5,18 @@ import TaskModalEdit from '../TaskModalEdit/TaskModalEdit';
 import Swal from 'sweetalert2';
 import './TaskItem.css';
 
-const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada }) => {
-  const [checkedTasks, setCheckedTasks] = useState([]);
+const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada, date }) => {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [show, setShow] = useState(false);
 
-  const date = ()=>{
-    const date = new Date();
-    const [month, day, year] = [
-      date.getMonth(),
-      date.getDate(),
-      date.getFullYear(),
-    ];
-    return `${day}/${month}/${year}`
-  }
+  useEffect(() => {
+  }, [tareas]);
+
+  const handleCheck = (index) => {
+    const newTareas = [...tareas];
+    newTareas[index].completada = !newTareas[index].completada;
+    setTareas(newTareas);
+  };
 
   const handleShow = (index) => {
     setSelectedIndex(index);
@@ -29,18 +27,8 @@ const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada }) => {
     setSelectedIndex(null);
     setShow(false);
   };
-
-  useEffect(() => {
-    setCheckedTasks(new Array(tareas.length).fill(false));
-  }, [tareas]);
-
-  const handleCheck = (index) => {
-    setCheckedTasks((prevCheckedTasks) => {
-      const newCheckedTasks = [...prevCheckedTasks];
-      newCheckedTasks[index] = !newCheckedTasks[index];
-      return newCheckedTasks;
-    });
-  };
+  
+  const fecha = date();
 
   const handleDelete = (index) => {
     Swal.fire({
@@ -70,20 +58,20 @@ const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada }) => {
   return (
     <>
       {tareas.map((tarea, index) => (
-        <li key={index} className="list-group-item customListGrupo">
+        <li key={index} className={`list-group-item customListGrupo ${tarea.completada ? 'completada' : ''}`}>
           <div className="gapDiv">
             <input
               className="form-check-input"
               type="checkbox"
               id={`check-${index}`}
-              checked={checkedTasks[index] || false}
+              checked={tarea.completada || false}
               onChange={() => handleCheck(index)}
             />
             <div className='containerTarea'>
               <div>
-                {date()}
+                {fecha}
               </div>
-              <strong> {checkedTasks[index] ? <strike>{tarea}</strike> : tarea}</strong>
+              <strong>{tarea.completada ? <strike>{tarea.resumen}</strike> : tarea.resumen}</strong>
             </div>
           </div>
           <div className="gapDiv">
@@ -98,6 +86,7 @@ const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada }) => {
                 tareas={tareas}
                 index={selectedIndex}
                 handleGuardarTareaEditada={handleGuardarTareaEditada}
+                date={date}
               />
               ) : (
                 <></>
