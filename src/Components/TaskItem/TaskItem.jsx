@@ -163,7 +163,7 @@ const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada, date }) => {
 
   return (
     <>
-    {tareas.length == 0 ? <p>vacio</p> : tareas.map((tarea, index) => (
+    {tareas.length == 0 ? "" : tareas.map((tarea, index) => (
         <li key={index} className={`list-group-item customListGrupo ${tarea.completada ? 'completada' : ''}`}>
           <div className="gapDiv">
             <input
