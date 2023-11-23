@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 import TaskModal from '../TaskModal/TaskModal';
 import TaskList from '../TaskList/TaskList';
-import { doc, getDoc, getFirestore } from "firebase/firestore";
 import './TaskForm.css';
 import Button from 'react-bootstrap/esm/Button';
 import Swal from 'sweetalert2';
+import { Fade } from 'react-awesome-reveal';
 
 const TaskForm = () => {
   const [tareas, setTareas] = useState(() => {
@@ -94,11 +95,6 @@ const TaskForm = () => {
       });
   }
 
-  console.log("esto es tareas", tareas);
-  console.log(typeof( tareas.length));
-  console.log( tareas.length);
-
-
   return (
     <div className='container-fluid customContainerFluid'>
       <h1><strong>DO.TASK</strong></h1>
@@ -109,14 +105,16 @@ const TaskForm = () => {
       </div>
       <br />
       <br />
-      {(tareas.length)!==0 ? 
-        <div className='d-flex justify-content-end clearBtn'>
-          <Button variant='dark' onClick={()=> {clearLocalStorage()}}>
-            <i className="ri-delete-bin-7-line"></i>
-          </Button>
-        </div>
-      :
-        ""}
+      <Fade>
+        {(tareas.length)!==0 ? 
+          <div className='d-flex justify-content-end clearBtn'>
+            <Button variant='dark' onClick={()=> {clearLocalStorage()}}>
+              <i className="ri-delete-bin-7-line"></i>
+            </Button>
+          </div>
+        :
+          ""}
+      </Fade>
       <TaskList
         tareas={tareas}
         setTareas={setTareas}

@@ -62,7 +62,7 @@ function TaskModal({ handleGuardarTarea, date }) {
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label>Descripcion de la tarea</Form.Label>
-              <Form.Control
+              <Form.Control id='focusButton'
                 as="textarea"
                 rows={3}
                 value={descripcion}
