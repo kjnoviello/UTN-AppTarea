@@ -6,8 +6,23 @@ import { doc, getDoc, getFirestore } from "firebase/firestore";
 import './TaskForm.css';
 
 const TaskForm = () => {
-  const [tareas, setTareas] = useState([]);
+  const [tareas, setTareas] = useState(() => {
+    const savedTareas = JSON.parse(localStorage.getItem('tareas'));
+    return savedTareas || [];
+  });
+
   const [consultTask, setConsultTask] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem('tareas', JSON.stringify(tareas));
+  }, [tareas]);
+
+  useEffect(() => {
+    const savedTareas = JSON.parse(localStorage.getItem('tareas'));
+    if (savedTareas) {
+      setTareas(savedTareas);
+    }
+  }, []);
 
   //! FIREBASE
   useEffect(() => {
@@ -27,21 +42,19 @@ const TaskForm = () => {
       const nuevaTarea = {
         resumen: descripcion,
         fecha: date(),
-        completada: !true,
+        completada: false,
       };
-      setTareas([...tareas, nuevaTarea]);
+      setTareas((prevTareas) => [...prevTareas, nuevaTarea]);
     }
   };
 
-
   const handleGuardarTareaEditada = (descripcion, index) => {
     if (descripcion.trim() !== "") {
-      const tareasActualizadas = [...tareas];
-      tareasActualizadas[index] = {
-        ...tareasActualizadas[index],
-        resumen: descripcion,
-      };
-      setTareas(tareasActualizadas);
+      setTareas((prevTareas) =>
+        prevTareas.map((tarea, i) =>
+          i === index ? { ...tarea, resumen: descripcion } : tarea
+        )
+      );
     }
   };
 
@@ -55,7 +68,7 @@ const TaskForm = () => {
     return `${day}/${month}/${year}`;
   };
 
-  console.log(tareas);
+  console.log("esto es tareas", tareas);
 
   return (
     <div className='container-fluid customContainerFluid'>
