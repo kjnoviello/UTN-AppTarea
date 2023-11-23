@@ -4,6 +4,8 @@ import TaskModal from '../TaskModal/TaskModal';
 import TaskList from '../TaskList/TaskList';
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import './TaskForm.css';
+import Button from 'react-bootstrap/esm/Button';
+import Swal from 'sweetalert2';
 
 const TaskForm = () => {
   const [tareas, setTareas] = useState(() => {
@@ -68,7 +70,34 @@ const TaskForm = () => {
     return `${day}/${month}/${year}`;
   };
 
+  const clearLocalStorage = ()=> {
+      Swal.fire({
+        title: 'Vaciar la lista?',
+        text: "Esto eliminará todas las tareas",
+        showCancelButton: true,
+        confirmButtonText: '<i class="ri-check-line"></i>',
+        cancelButtonText: '<i class="ri-close-line"></i>'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: 'Se eliminaron las tareas!',
+            icon: 'success',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          localStorage.clear()
+          console.log("clear localstorage");
+          setTareas([])
+        }
+      });
+  }
+
   console.log("esto es tareas", tareas);
+  console.log(typeof( tareas.length));
+  console.log( tareas.length);
+
 
   return (
     <div className='container-fluid customContainerFluid'>
@@ -80,6 +109,14 @@ const TaskForm = () => {
       </div>
       <br />
       <br />
+      {(tareas.length)!==0 ? 
+        <div className='d-flex justify-content-end clearBtn'>
+          <Button variant='dark' onClick={()=> {clearLocalStorage()}}>
+            <i className="ri-delete-bin-7-line"></i>
+          </Button>
+        </div>
+      :
+        ""}
       <TaskList
         tareas={tareas}
         setTareas={setTareas}

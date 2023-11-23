@@ -25,3 +25,8 @@ h1, h3{
   font: normal normal 400 70px/80px 'Fira Sans', sans-serif;
 }
 
+.clearBtn{
+  padding-right: 16px;
+  padding-bottom: 8px;
+}
+

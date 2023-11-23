@@ -198,7 +198,7 @@ const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada, date }) => {
                 <></>
               )}
             <Button variant="outline-dark" onClick={() => handleDelete(index)}>
-              <i className="ri-delete-bin-2-line"></i>
+              <i className="ri-delete-back-2-line"></i>
             </Button>
           </div>
         </li>
