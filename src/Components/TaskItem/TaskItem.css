@@ -40,6 +40,10 @@
     flex-wrap: wrap;
 }
 
+strike{
+    filter: opacity(0.5);
+}
+
 @media (max-width: 576px) {
     .customListGrupo{
         font-size: 12px;

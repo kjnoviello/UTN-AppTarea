@@ -32,7 +32,7 @@ function TaskModal({ handleGuardarTarea, date }) {
         toast: true,
         showConfirmButton: false,
         timer: 1500,
-    });
+      });
     }
   };
 

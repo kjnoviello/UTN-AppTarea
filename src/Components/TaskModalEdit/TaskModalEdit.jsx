@@ -18,8 +18,7 @@ function TaskModalEdit({ handleGuardarTareaEditada, show, handleClose, tareas, i
   };
 
   const handleGuardar = () => {
-    handleGuardarTareaEditada(descripcion, index);
-    
+    handleGuardarTareaEditada(descripcion, index); 
     handleClose();
     if (descripcion !="") {
       Swal.fire({
@@ -30,7 +29,6 @@ function TaskModalEdit({ handleGuardarTareaEditada, show, handleClose, tareas, i
         showConfirmButton: false,
         timer: 1500,
       });
-      
     }
   };
 
