@@ -38,7 +38,11 @@ function TaskModalEdit({ handleGuardarTareaEditada, show, handleClose, tareas, i
 
   return (
     <>
-      <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+      <Modal 
+        show={show} 
+        onHide={handleClose} 
+        backdrop="static" 
+        keyboard={false}>
         <Modal.Header closeButton>
           <Modal.Title>Editar tarea</Modal.Title>
         </Modal.Header>
@@ -49,7 +53,12 @@ function TaskModalEdit({ handleGuardarTareaEditada, show, handleClose, tareas, i
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
               <Form.Label>Descripción de la tarea</Form.Label>
-              <Form.Control as="textarea" rows={3} value={descripcion} onChange={handleSetDescripcion} />
+              <Form.Control
+                autoFocus
+                as="textarea" 
+                rows={3} 
+                value={descripcion} 
+                onChange={handleSetDescripcion} />
             </Form.Group>
           </Form>
         </Modal.Body>

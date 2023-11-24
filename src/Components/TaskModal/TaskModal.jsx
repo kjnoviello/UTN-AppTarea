@@ -47,8 +47,7 @@ function TaskModal({ handleGuardarTarea, date }) {
         show={show}
         onHide={handleClose}
         backdrop="static"
-        keyboard={false}
-      >
+        keyboard={false}>
         <Modal.Header closeButton>
           <Modal.Title>Nueva tarea</Modal.Title>
         </Modal.Header>
@@ -59,15 +58,14 @@ function TaskModal({ handleGuardarTarea, date }) {
             </Form.Group>
             <Form.Group
               className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
+              controlId="exampleForm.ControlTextarea1">
               <Form.Label>Descripcion de la tarea</Form.Label>
-              <Form.Control id='focusButton'
+              <Form.Control
+                autoFocus
                 as="textarea"
                 rows={3}
                 value={descripcion}
-                onChange={handleSetDescripcion}
-              />
+                onChange={handleSetDescripcion}/>
             </Form.Group>
           </Form>
         </Modal.Body>
