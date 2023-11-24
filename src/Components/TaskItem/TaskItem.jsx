@@ -6,7 +6,7 @@ import TaskModalEdit from '../TaskModalEdit/TaskModalEdit';
 import Swal from 'sweetalert2';
 import './TaskItem.css';
 
-const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada, date }) => {
+const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada, tareaDate }) => {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [show, setShow] = useState(false);
 
@@ -26,7 +26,6 @@ const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada, date }) => {
     setShow(false);
   };
   
-  const fecha = date();
 
   const handleDelete = (index) => {
     Swal.fire({
@@ -68,7 +67,7 @@ const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada, date }) => {
             />
             <div className='containerTarea'>
               <div>
-                {fecha}
+                {tarea.fecha}
               </div>
               <strong>{tarea.completada ? <strike>{tarea.resumen}</strike> : tarea.resumen}</strong>
             </div>
@@ -85,7 +84,7 @@ const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada, date }) => {
                 tareas={tareas}
                 index={selectedIndex}
                 handleGuardarTareaEditada={handleGuardarTareaEditada}
-                date={date}
+                tareaDate={tareaDate}
               />
               ) : (
                 <></>

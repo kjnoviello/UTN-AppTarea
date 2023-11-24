@@ -7,7 +7,7 @@ import Modal from 'react-bootstrap/Modal';
 import Swal from 'sweetalert2';
 import ('./TaskModal.css')
 
-function TaskModal({ handleGuardarTarea, date }) {
+function TaskModal({ handleGuardarTarea, tareaDate }) {
   const [show, setShow] = useState(false);
   const [descripcion, setDescripcion] = useState('')
 
@@ -18,7 +18,7 @@ function TaskModal({ handleGuardarTarea, date }) {
     setDescripcion(e.target.value)
   }
 
-  const fecha = date()
+  const fecha = tareaDate
 
   const handleGuardar = () => {
     handleGuardarTarea(descripcion);

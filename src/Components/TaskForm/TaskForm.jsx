@@ -44,18 +44,18 @@ const TaskForm = () => {
     if (descripcion.trim() !== "") {
       const nuevaTarea = {
         resumen: descripcion,
-        fecha: date(),
+        fecha: tareaDate,
         completada: false,
       };
       setTareas((prevTareas) => [...prevTareas, nuevaTarea]);
     }
   };
 
-  const handleGuardarTareaEditada = (descripcion, index) => {
+  const handleGuardarTareaEditada = (descripcion, fecha, index) => {
     if (descripcion.trim() !== "") {
       setTareas((prevTareas) =>
         prevTareas.map((tarea, i) =>
-          i === index ? { ...tarea, resumen: descripcion } : tarea
+          i === index ? { ...tarea, resumen: descripcion, fecha: fecha } : tarea
         )
       );
     }
@@ -70,6 +70,10 @@ const TaskForm = () => {
     ];
     return `${day}/${month}/${year}`;
   };
+
+  const tareaDate = date()
+  console.log(tareas);
+
 
   const clearLocalStorage = ()=> {
       Swal.fire({
@@ -101,12 +105,12 @@ const TaskForm = () => {
       <h4><i>App de tareas</i></h4>
       <br />
       <div className='container-lg customContainer-lg'>
-        <TaskModal handleGuardarTarea={handleGuardarTarea} date={date} />
+        <TaskModal handleGuardarTarea={handleGuardarTarea} tareaDate={tareaDate} />
       </div>
       <br />
       <br />
       <Fade>
-        {(tareas.length)!==0 ? 
+        {(tareas.length)!==0 ?
           <div className='d-flex justify-content-end clearBtn'>
             <Button variant='dark' onClick={()=> {clearLocalStorage()}}>
               <i className="ri-delete-bin-7-line"></i>
@@ -119,7 +123,7 @@ const TaskForm = () => {
         tareas={tareas}
         setTareas={setTareas}
         handleGuardarTareaEditada={handleGuardarTareaEditada}
-        date={date}
+        tareaDate={tareaDate}
       ></TaskList>
     </div>
   );

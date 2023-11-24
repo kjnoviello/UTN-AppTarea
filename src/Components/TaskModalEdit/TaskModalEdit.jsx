@@ -6,7 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import Swal from 'sweetalert2';
 import './TaskModalEdit.css';
 
-function TaskModalEdit({ handleGuardarTareaEditada, show, handleClose, tareas, index, date }) {
+function TaskModalEdit({ handleGuardarTareaEditada, show, handleClose, tareas, index, tareaDate }) {
   const [descripcion, setDescripcion] = useState(tareas[index].resumen || '');
 
   useEffect(() => {
@@ -18,7 +18,7 @@ function TaskModalEdit({ handleGuardarTareaEditada, show, handleClose, tareas, i
   };
 
   const handleGuardar = () => {
-    handleGuardarTareaEditada(descripcion, index); 
+    handleGuardarTareaEditada(descripcion, fecha, index); 
     handleClose();
     if (descripcion !="") {
       Swal.fire({
@@ -32,7 +32,7 @@ function TaskModalEdit({ handleGuardarTareaEditada, show, handleClose, tareas, i
     }
   };
 
-  const fecha = date()
+  const fecha = tareaDate
 
   return (
     <>
