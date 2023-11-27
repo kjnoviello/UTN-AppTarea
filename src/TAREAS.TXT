@@ -1,5 +1,0 @@
-- Poder elegir un color (de fondo o de texto) al agregar una nueva tarea.
-- incorporar la fecha cuando se guarde la tarea
-- incorporar un spin loader para las tareas
-- guardar tareas en firebase
-- hacer login y traer tareas del usuario

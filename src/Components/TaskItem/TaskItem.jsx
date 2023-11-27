@@ -25,7 +25,6 @@ const TaskItem = ({ tareas, setTareas, handleGuardarTareaEditada, tareaDate }) =
     setSelectedIndex(null);
     setShow(false);
   };
-  
 
   const handleDelete = (index) => {
     Swal.fire({

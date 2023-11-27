@@ -42,7 +42,6 @@ function TaskModal({ handleGuardarTarea, tareaDate }) {
         <i className="ri-add-line"></i>
         <p>Nueva tarea</p>
       </Button>
-
       <Modal
         show={show}
         onHide={handleClose}
