@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
-import { doc, getDoc, getFirestore } from "firebase/firestore";
+// import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { Fade } from 'react-awesome-reveal';
 import TaskModal from '../TaskModal/TaskModal';
 import TaskList from '../TaskList/TaskList';
-import './TaskForm.css';
 import Button from 'react-bootstrap/esm/Button';
 import Swal from 'sweetalert2';
-import { Fade } from 'react-awesome-reveal';
+import './TaskForm.css';
 
 const TaskForm = () => {
   const [tareas, setTareas] = useState(() => {
@@ -14,7 +14,7 @@ const TaskForm = () => {
     return savedTareas || [];
   });
 
-  const [consultTask, setConsultTask] = useState("");
+  // const [consultTask, setConsultTask] = useState("");
 
   useEffect(() => {
     localStorage.setItem('tareas', JSON.stringify(tareas));
@@ -27,18 +27,18 @@ const TaskForm = () => {
     }
   }, []);
 
-  //! FIREBASE
-  useEffect(() => {
-    const db = getFirestore();
-    const biciRef = doc(db, "consultTask", "TkMe4vVlctDnyxXMDZzY");
-    getDoc(biciRef).then((snapshot) => {
-      if (snapshot.exists()) {
-        setConsultTask({ id: snapshot.id, ...snapshot.data() });
-        console.log(consultTask);
-      }
-    });
-  }, [tareas]);
-  //! FIN FAREBASE
+  // //! FIREBASE
+  // useEffect(() => {
+  //   const db = getFirestore();
+  //   const biciRef = doc(db, "consultTask", "TkMe4vVlctDnyxXMDZzY");
+  //   getDoc(biciRef).then((snapshot) => {
+  //     if (snapshot.exists()) {
+  //       setConsultTask({ id: snapshot.id, ...snapshot.data() });
+  //       console.log(consultTask);
+  //     }
+  //   });
+  // }, [tareas]);
+  // //! FIN FAREBASE
 
   const handleGuardarTarea = (descripcion) => {
     if (descripcion.trim() !== "") {
