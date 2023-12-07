@@ -68,12 +68,11 @@ const TaskForm = () => {
       date.getDate(),
       date.getFullYear(),
     ];
-    return `${day}/${month}/${year}`;
+     let actMonth = month + 1
+    return `${day}/${actMonth}/${year}`;
   };
 
   const tareaDate = date()
-  console.log(tareas);
-
 
   const clearLocalStorage = ()=> {
       Swal.fire({
@@ -124,6 +123,7 @@ const TaskForm = () => {
         setTareas={setTareas}
         handleGuardarTareaEditada={handleGuardarTareaEditada}
         tareaDate={tareaDate}
+        date={date}
       ></TaskList>
     </div>
   );
