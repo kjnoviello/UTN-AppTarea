@@ -8,7 +8,7 @@
 
 ## Descripcion
 
-Una app de tareas donde se puede crear, editar y eliminar tareas individuales y se pueden marcar como completadas. Las tareas quedan guardadas en el local storage.
+Una app de tareas donde se puede crear, editar y eliminar tareas individuales y se pueden marcar como completadas. Las tareas quedan guardadas en el local storage. El proyecto fue para la entrega final del curso **Desarrollo Web con React** dictado por la UTN con Argentina Programa
 
 
 ## Estado
