@@ -56,6 +56,6 @@ El estado del proyecto se encuentra como un MVP robusto. Se prevee la implementa
 
 ## Extra
 
-_Desarrollado por **Kevin Joel Noviello** en junio del 2023, Argentina._
+_Desarrollado por **Kevin Joel Noviello** en noviembre del 2023, Argentina._
 
 [Linkedin Kevin Joel Noviello](https://www.linkedin.com/in/kevinjoelnoviello/)
